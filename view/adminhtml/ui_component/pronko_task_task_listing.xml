@@ -1,0 +1,135 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">pronko_task_task_listing.pronko_task_task_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>pronko_task_task_columns</spinner>
+		<deps>
+			<dep>pronko_task_task_listing.pronko_task_task_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add New Task</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource component="Magento_Ui/js/grid/provider" name="pronko_task_task_listing_data_source">
+		<settings>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Pronko_Task::Task</aclResource>
+		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="pronko_task_task_listing_data_source">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>task_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="pronko_task_task_columns">
+		<settings>
+			<childDefaults>
+				<param name="fieldAction" xsi:type="array">
+					<item name="provider" xsi:type="string">pronko_task_task_listing.pronko_task_task_listing.pronko_task_task_columns_editor</item>
+					<item name="target" xsi:type="string">startEdit</item>
+					<item name="params" xsi:type="array">
+						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+						<item name="1" xsi:type="boolean">true</item>
+					</item>
+				</param>
+			</childDefaults>
+		</settings>
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>task_id</indexField>
+
+			</settings>
+		</selectionsColumn>
+		<column name="name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">Task Name</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="description">
+			<settings>
+				<label translate="true">Task Description</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="start_time">
+			<settings>
+				<label translate="true">Start Time</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="end_time">
+			<settings>
+				<label translate="true">End Time</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="assign_person">
+			<settings>
+				<label translate="true">Assigned Person</label>
+				<editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<column name="status" class="Pronko\Task\Ui\Component\Listing\Column\Status">
+			<settings>
+				<label translate="true">Status</label>
+                <editor>
+					<editorType>text</editorType>
+					<validation>
+						<rule name="required-entry" xsi:type="boolean">true</rule>
+					</validation>
+				</editor>
+			</settings>
+		</column>
+		<actionsColumn class="Pronko\Task\Ui\Component\Listing\Column\TaskActions" name="actions">
+			<settings>
+				<indexField>task_id</indexField>
+				<resizeEnabled>true</resizeEnabled>
+				<resizeDefaultWidth>75</resizeDefaultWidth>
+			</settings>
+		</actionsColumn>
+	</columns>
+</listing>

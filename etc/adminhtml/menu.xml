@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Pronko::top_level" module="Pronko_Task" resource="Magento_Backend::content" sortOrder="10" title="Pronko"/>
+		<add action="pronko_task/task/index" id="Pronko_Task::pronko_task_task" module="Pronko_Task" parent="Pronko::top_level" resource="Magento_Backend::content" sortOrder="10" title="Task"/>
+	</menu>
+</config>

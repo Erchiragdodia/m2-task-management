@@ -1,0 +1,22 @@
+{
+    "name": "pronko/module-task",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "email": "chirag.d7373@gmail.com",
+            "name": "chirag dodia"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Pronko\\Task\\": ""
+        }
+    }
+}
